@@ -1,5 +1,5 @@
-.tabs {
+.main-content {
+  height: calc(100vh - 60px);
   display: flex;
-  width: 10%;
-  cursor: pointer;
+  overflow: hidden;
 }

@@ -8,8 +8,6 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class AppComponent {
   title = 'platform';
 
-  tabs = [{ name: 'App 1' }, { name: 'App 2' }];
-
   @ViewChild('microfrontendContainer') container: ElementRef | undefined;
 
   ngAfterViewInit() {
