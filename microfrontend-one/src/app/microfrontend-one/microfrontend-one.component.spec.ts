@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MicrofrontendRootComponent } from './microfrontend-root.component';
+import { MicrofrontendOneComponent } from './microfrontend-one.component';
 
-describe('MicrofrontendRootComponent', () => {
-  let component: MicrofrontendRootComponent;
-  let fixture: ComponentFixture<MicrofrontendRootComponent>;
+describe('MicrofrontendOneComponent', () => {
+  let component: MicrofrontendOneComponent;
+  let fixture: ComponentFixture<MicrofrontendOneComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MicrofrontendRootComponent ]
+      declarations: [ MicrofrontendOneComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MicrofrontendRootComponent);
+    fixture = TestBed.createComponent(MicrofrontendOneComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
