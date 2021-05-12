@@ -5,14 +5,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: 'mfe',
+    path: 'mfe/:id',
     component: MicrofrontendContainerComponent,
-    children: [
-      {
-        path: ':id',
-        component: MicrofrontendContainerComponent,
-      },
-    ],
   },
   {
     path: '**',

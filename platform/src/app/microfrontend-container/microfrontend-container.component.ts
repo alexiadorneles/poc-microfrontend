@@ -2,8 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,36 +11,32 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './microfrontend-container.component.html',
   styleUrls: ['./microfrontend-container.component.scss'],
 })
-export class MicrofrontendContainerComponent implements AfterViewInit, OnInit {
+export class MicrofrontendContainerComponent implements AfterViewInit {
   @ViewChild('microfrontendContainer') container: ElementRef | undefined;
+  private microfrontendID: string | undefined;
 
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params) => console.log(params));
-  }
-
   ngAfterViewInit(): void {
-    this.loadScriptJS();
-    this.renderMicrofrontend();
+    this.route.params.subscribe((params) => {
+      this.microfrontendID = params.id;
+      this.loadScriptJS();
+      this.renderMicrofrontend();
+    });
   }
 
   private renderMicrofrontend(): void {
-    if (!this.container) {
-      return;
-    }
-    this.container.nativeElement.innerHTML = '';
-    const microFrontend = document.createElement(`app-microfrontend-root`);
-    this.container.nativeElement.appendChild(microFrontend);
+    this.container!.nativeElement.innerHTML = '';
+    const microFrontend = document.createElement(
+      `app-microfrontend-${this.microfrontendID}`
+    );
+    this.container!.nativeElement.appendChild(microFrontend);
   }
 
   private loadScriptJS(): void {
-    if (!this.container) {
-      return;
-    }
     const script = document.createElement('script');
     script.src = 'http://127.0.0.1:4700/single-bundle.js';
     script.type = 'text/javascript';
-    this.container.nativeElement.appendChild(script);
+    this.container!.nativeElement.appendChild(script);
   }
 }
