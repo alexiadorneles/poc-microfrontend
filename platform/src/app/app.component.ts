@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,24 +7,4 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'platform';
-
-  @ViewChild('microfrontendContainer') container: ElementRef | undefined;
-
-  ngAfterViewInit() {
-    this.loadScriptJS();
-    this.renderMicrofrontend();
-  }
-
-  private renderMicrofrontend() {
-    this.container!.nativeElement.innerHTML = '';
-    const microFrontend = document.createElement(`app-microfrontend-root`);
-    this.container!.nativeElement.appendChild(microFrontend);
-  }
-
-  private loadScriptJS() {
-    const script = document.createElement('script');
-    script.src = 'http://127.0.0.1:4700/single-bundle.js';
-    script.type = 'text/javascript';
-    this.container!.nativeElement.appendChild(script);
-  }
 }

@@ -1,10 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MicrofrontendContainerComponent } from './microfrontend-container/microfrontend-container.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'mfe',
+    component: MicrofrontendContainerComponent,
+    children: [
+      {
+        path: ':id',
+        component: MicrofrontendContainerComponent,
+      },
+    ],
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
