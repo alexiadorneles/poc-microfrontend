@@ -1,5 +1,20 @@
 aside {
+  margin: 0;
   height: 100%;
-  width: 250px;
-  background-color: black;
+  width: 200px;
+  background-color: #1976d2;
+  color: white;
+  display: flex;
+}
+
+.list-apps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding-top: 10px;
+
+  .app-name {
+    cursor: pointer;
+  }
 }
