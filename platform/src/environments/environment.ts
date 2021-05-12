@@ -2,8 +2,17 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+interface Env {
+  production: boolean;
+  microfrontends: { [key: string]: { url: string } };
+}
+
+export const environment: Env = {
+  production: false,
+  microfrontends: {
+    one: { url: 'http://localhost:4700' },
+    two: { url: 'http://localhost:4500' },
+  },
 };
 
 /*
