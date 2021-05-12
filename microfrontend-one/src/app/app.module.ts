@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { MicrofrontendRootComponent } from './microfrontend-root/microfrontend-root.component';
+import { MicrofrontendOneComponent } from './microfrontend-one/microfrontend-one.component';
 
 @NgModule({
-  declarations: [MicrofrontendRootComponent],
+  declarations: [MicrofrontendOneComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [MicrofrontendRootComponent],
+  bootstrap: [MicrofrontendOneComponent],
 })
 export class AppModule {}
