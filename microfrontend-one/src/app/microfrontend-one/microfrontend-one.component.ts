@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-microfrontend-one',
+  selector: 'app-mfe1-root',
   templateUrl: './microfrontend-one.component.html',
-  styleUrls: ['./microfrontend-one.component.scss']
+  styleUrls: ['./microfrontend-one.component.scss'],
 })
-export class MicrofrontendOneComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class MicrofrontendOneComponent {}

@@ -1,4 +1,4 @@
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, Injector, DoBootstrap } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,9 +8,8 @@ import { MicrofrontendOneComponent } from './microfrontend-one/microfrontend-one
   declarations: [MicrofrontendOneComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [MicrofrontendOneComponent],
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
   constructor(injector: Injector) {
     const element = createCustomElement(MicrofrontendOneComponent, {
       injector,
@@ -19,4 +18,6 @@ export class AppModule {
       customElements.define('app-microfrontend-one', element);
     }
   }
+
+  ngDoBootstrap(): void {}
 }
