@@ -7,7 +7,7 @@ const main = "./dist/microfrontend-two/main.js";
 
 const files = [vendor, polyfill, runTime, main];
 
-let content = "";
+let content = "console.log('MFE2 :::::::::: loaded single bundle');";
 
 files.forEach((file) => {
   try {

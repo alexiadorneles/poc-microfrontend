@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-microfrontend-two',
+  selector: 'app-mfe2-root',
   templateUrl: './microfrontend-two.component.html',
   styleUrls: ['./microfrontend-two.component.scss'],
 })
