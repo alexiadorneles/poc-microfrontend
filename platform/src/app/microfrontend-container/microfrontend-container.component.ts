@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 const generateScriptID = (mfe: string = '') => `${mfe}-script`;
@@ -42,7 +42,6 @@ export class MicrofrontendContainerComponent implements AfterViewInit {
     script.id = generateScriptID(id);
     script.src = `${microfrontendConfig.url}/single-bundle.js`;
     script.type = 'text/javascript';
-    script.defer = true;
     document.body.appendChild(script);
   }
 
