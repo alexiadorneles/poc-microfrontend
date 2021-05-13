@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { MicrofrontendTwoComponent } from './microfrontend-two/microfrontend-two.component';
 
@@ -10,4 +10,13 @@ import { MicrofrontendTwoComponent } from './microfrontend-two/microfrontend-two
   providers: [],
   bootstrap: [MicrofrontendTwoComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(injector: Injector) {
+    const element = createCustomElement(MicrofrontendTwoComponent, {
+      injector,
+    });
+    if (!customElements.get('app-microfrontend-two')) {
+      customElements.define('app-microfrontend-two', element);
+    }
+  }
+}
