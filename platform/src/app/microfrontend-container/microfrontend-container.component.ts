@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { environment } from 'src/environments/environment';
+
+const generateScriptID = (mfe: string = '') => `${mfe}-script`;
 
 @Component({
   selector: 'app-microfrontend-container',
@@ -11,33 +13,42 @@ export class MicrofrontendContainerComponent implements AfterViewInit {
   @ViewChild('microfrontendContainer') container:
     | ElementRef<HTMLDivElement>
     | undefined;
-  private microfrontendID: string | undefined;
 
   constructor(private route: ActivatedRoute) {}
 
   ngAfterViewInit(): void {
-    this.route.params.subscribe((params) => {
-      this.microfrontendID = params.id;
-      this.container!.nativeElement.innerHTML = '';
-      this.loadScriptJS();
-      // commenting following line reproduces the bug we have
-      this.renderMicrofrontend();
-    });
+    this.route.params.subscribe((params) => this.loadMicrofrontend(params.id));
   }
 
-  private loadScriptJS(): void {
-    const microfrontendConfig =
-      environment.microfrontends[this.microfrontendID!];
+  private loadMicrofrontend = (id: string): void => {
+    if (this.scriptDoesNotExistOnDOM(id)) {
+      this.loadScriptJS(id);
+    }
+    this.renderMicrofrontend(id);
+  };
+
+  private cleanContainerContent(): void {
+    this.container!.nativeElement.innerHTML = '';
+  }
+
+  private scriptDoesNotExistOnDOM(id: string): boolean {
+    const existingScript = document.getElementById(generateScriptID(id));
+    return !Boolean(existingScript);
+  }
+
+  private loadScriptJS(id: string): void {
+    const microfrontendConfig = environment.microfrontends[id!];
     const script = document.createElement('script');
+    script.id = generateScriptID(id);
     script.src = `${microfrontendConfig.url}/single-bundle.js`;
     script.type = 'text/javascript';
+    script.defer = true;
     document.body.appendChild(script);
   }
 
-  private renderMicrofrontend(): void {
-    const microFrontend = document.createElement(
-      `app-microfrontend-${this.microfrontendID}`
-    );
+  private renderMicrofrontend(id: string): void {
+    this.cleanContainerContent();
+    const microFrontend = document.createElement(`app-microfrontend-${id}`);
     this.container!.nativeElement.appendChild(microFrontend);
   }
 }
