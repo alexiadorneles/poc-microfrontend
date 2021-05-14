@@ -1,5 +1,5 @@
-import { HostListener } from '@angular/core';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mfe2-root',
@@ -7,22 +7,29 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./microfrontend-two.component.scss'],
 })
 export class MicrofrontendTwoComponent implements OnInit, OnDestroy {
-
-
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    window.addEventListener('SIDEBAR.MENU_CLICK', this.handleEventMenuClick, true);
+    this.router.initialNavigation();
+
+    window.addEventListener(
+      'SIDEBAR.MENU_CLICK',
+      this.handleEventMenuClick as EventListener,
+      true
+    );
   }
 
   @HostListener('unloaded')
   ngOnDestroy(): void {
-    console.log('mfe2 destroyed');
-
-    window.removeEventListener('SIDEBAR.MENU_CLICK', this.handleEventMenuClick, true);
+    window.removeEventListener(
+      'SIDEBAR.MENU_CLICK',
+      this.handleEventMenuClick as EventListener,
+      true
+    );
   }
 
-  private handleEventMenuClick(event: CustomEvent | Event) {
-    console.log('MFE2 LISTENER ' + (event as CustomEvent).detail);
-  }
-
+  private handleEventMenuClick = (event: CustomEvent) => {
+    const routeID = event.detail;
+    this.router.navigate([{ outlets: { mfe2: routeID } }]);
+  };
 }
