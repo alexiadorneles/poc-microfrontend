@@ -9,11 +9,26 @@ export const menuMock: Menu[] = [
   {
     id: 'meals',
     name: 'Meals',
-    icon: ''
+    icon: '',
   },
   {
     id: 'desserts',
     name: 'Desserts',
-    icon: ''
-  }
-]
+    icon: '',
+  },
+  {
+    id: 'address',
+    name: 'Address',
+    icon: '',
+  },
+  {
+    id: 'payment-method',
+    name: 'Payment Method',
+    icon: '',
+  },
+  {
+    id: 'confirmation',
+    name: 'Confirmation',
+    icon: '',
+  },
+];
