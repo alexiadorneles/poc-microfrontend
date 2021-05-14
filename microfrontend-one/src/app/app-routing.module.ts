@@ -7,29 +7,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 const routes: Routes = [
   {
-    path: '',
-    component: MicrofrontendOneComponent,
-    children: [
-      {
-        path: 'meals',
-        component: MealsComponent,
-        outlet: 'mfe1'
-      },
-      {
-        path: 'desserts',
-        component: DessertsComponent,
-        outlet: 'mfe1'
-      }
-    ]
-  }
-  // {
-  //   path: 'meals',
-  //   component: MealsComponent
-  // },
-  // {
-  //   path: 'desserts',
-  //   component: DessertsComponent
-  // }
+    path: 'meals',
+    component: MealsComponent,
+    outlet: 'mfe1',
+  },
+  {
+    path: 'desserts',
+    component: DessertsComponent,
+    outlet: 'mfe1',
+  },
 ];
 
 @NgModule({

@@ -7,28 +7,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./microfrontend-one.component.scss'],
 })
 export class MicrofrontendOneComponent implements OnInit, OnDestroy {
-
   /**
    *
    */
-  constructor(private router: Router) {
-
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.router.initialNavigation();
     console.log('MFE1 init');
-    window.addEventListener('SIDEBAR.MENU_CLICK', this.handleEventMenuClick);
+    window.addEventListener(
+      'SIDEBAR.MENU_CLICK',
+      this.handleEventMenuClick as EventListener
+    );
   }
 
   @HostListener('unloaded')
   ngOnDestroy(): void {
     console.log('mfe1 destroyed');
-    window.removeEventListener('SIDEBAR.MENU_CLICK', this.handleEventMenuClick);
+    window.removeEventListener(
+      'SIDEBAR.MENU_CLICK',
+      this.handleEventMenuClick as EventListener
+    );
   }
 
-  private handleEventMenuClick = (event: CustomEvent | Event) => {
-    console.log(event);
-    this.router.navigate([{outlets: {mfe1: 'meals'}}]);
-  }
+  private handleEventMenuClick = (event: CustomEvent<string>) => {
+    const routeID = event.detail;
+    this.router.navigate([{ outlets: { mfe1: routeID } }]);
+  };
 }
