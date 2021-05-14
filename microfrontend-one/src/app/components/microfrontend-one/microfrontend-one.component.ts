@@ -1,5 +1,6 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { INTERNAL_ROUTES } from 'src/app/routes/routes';
 
 @Component({
   selector: 'app-mfe1-root',
@@ -7,9 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./microfrontend-one.component.scss'],
 })
 export class MicrofrontendOneComponent implements OnInit, OnDestroy {
-  /**
-   *
-   */
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -19,6 +17,8 @@ export class MicrofrontendOneComponent implements OnInit, OnDestroy {
       'SIDEBAR.MENU_CLICK',
       this.handleEventMenuClick as EventListener
     );
+
+    this.fireMenuEventForPlatform();
   }
 
   @HostListener('unloaded')
@@ -28,6 +28,13 @@ export class MicrofrontendOneComponent implements OnInit, OnDestroy {
       'SIDEBAR.MENU_CLICK',
       this.handleEventMenuClick as EventListener
     );
+  }
+
+  private fireMenuEventForPlatform(): void {
+    const event = new CustomEvent('SIDEBAR.MFE_MENUS', {
+      detail: INTERNAL_ROUTES,
+    });
+    window.dispatchEvent(event);
   }
 
   private handleEventMenuClick = (event: CustomEvent<string>) => {
