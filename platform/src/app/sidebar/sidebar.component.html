@@ -1,8 +1,15 @@
-<aside>
+<aside class="sidebar">
   <ul class="list-apps">
     <li class="app-name"><a routerLink="/mfe/one"> MFE 1 </a></li>
     <li class="app-name"><a routerLink="/mfe/two"> MFE 2 </a></li>
   </ul>
 
-  <ul class="list-app-options"></ul>
+  <ul class="list-app-options">
+    <li *ngFor="let menu of menus" (click)="dispatchEvent(menu)">
+      <a>{{ menu.name }}</a>
+    </li>
+  </ul>
+
+
 </aside>
+
