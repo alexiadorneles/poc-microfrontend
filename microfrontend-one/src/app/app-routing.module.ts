@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { DessertsComponent } from './desserts/desserts.component';
-import { MealsComponent } from './meals/meals.component';
-import { MicrofrontendOneComponent } from './microfrontend-one/microfrontend-one.component';
+import { Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { DessertsComponent } from './components/desserts/desserts.component';
+import { MealsComponent } from './components/meals/meals.component';
 
 const routes: Routes = [
   {

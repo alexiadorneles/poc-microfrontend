@@ -1,10 +1,10 @@
-import { NgModule, Injector, DoBootstrap } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { MicrofrontendOneComponent } from './microfrontend-one/microfrontend-one.component';
-import { MealsComponent } from './meals/meals.component';
-import { DessertsComponent } from './desserts/desserts.component';
+import { DessertsComponent } from './components/desserts/desserts.component';
+import { MealsComponent } from './components/meals/meals.component';
+import { MicrofrontendOneComponent } from './components/microfrontend-one/microfrontend-one.component';
 
 @NgModule({
   declarations: [MicrofrontendOneComponent, MealsComponent, DessertsComponent],
