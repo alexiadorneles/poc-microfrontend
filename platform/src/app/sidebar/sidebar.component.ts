@@ -15,7 +15,10 @@ export class SidebarComponent implements OnInit {
   }
 
   dispatchEvent(menu: Menu) {
-
+    const event = new CustomEvent('SIDEBAR.MENU_CLICK', {
+      detail: menu.id
+    });
+    window.dispatchEvent(event);
   }
 
 }
