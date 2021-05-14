@@ -2,18 +2,18 @@ export interface Menu {
   id: string;
   name: string;
   icon: string;
-  submenus?: Menu[];
+  subMenus?: Menu[];
 }
 
 export const menuMock: Menu[] = [
   {
-    id: 'meal',
+    id: 'meals',
     name: 'Meals',
     icon: ''
   },
   {
-    id: 'desert',
-    name: 'Deserts',
+    id: 'desserts',
+    name: 'Desserts',
     icon: ''
   }
 ]

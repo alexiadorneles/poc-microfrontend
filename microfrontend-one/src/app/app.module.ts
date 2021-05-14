@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
 import { AppRoutingModule } from './app-routing.module';
 import { MicrofrontendOneComponent } from './microfrontend-one/microfrontend-one.component';
+import { MealsComponent } from './meals/meals.component';
+import { DessertsComponent } from './desserts/desserts.component';
 
 @NgModule({
-  declarations: [MicrofrontendOneComponent],
+  declarations: [MicrofrontendOneComponent, MealsComponent, DessertsComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
 })
