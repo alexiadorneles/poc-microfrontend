@@ -7,33 +7,67 @@ aside.sidebar {
   display: flex;
   flex-direction: column;
 
+  .mfe__title {
+    margin: 0;
+    padding: 0;
+    background-color: lighten($color: #1976d2, $amount: 45%);
+    color: #1976d2;
+    text-align: center;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
+  .option__title {
+    margin: 0;
+    padding: 0;
+    background-color: lighten($color: #C3002F, $amount: 45%);
+    color: #C3002F;
+    text-align: center;
+    font-size: 1em;
+    text-transform: uppercase;
+  }
+
   .list-apps {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    margin: 20px 0;
+    padding: 0;
     list-style: none;
     padding-top: 10px;
 
     .app-name {
       cursor: pointer;
       text-decoration: none;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid rgba($color: #fff, $alpha: .3);
 
-      a {
-        text-decoration: none;
-        color: white;
+      &:hover {
+        background-color: darken($color: #1976d2, $amount: 5%);
       }
     }
+
+
   }
 
   .list-app-options {
+    margin: 0;
+    padding: 0;
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 
     li {
       cursor: pointer;
-    }
+      text-decoration: none;
+      padding: 15px;
+      text-align: center;
+      background-color: #C3002F;
+      border-bottom: 1px solid rgba($color: #fff, $alpha: .3);
+
+      &:hover {
+        background-color: darken($color: #C3002F, $amount: 5%);
+      }    }
 
     a {
       text-decoration: none;
