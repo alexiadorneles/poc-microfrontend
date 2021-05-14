@@ -5,8 +5,8 @@
     "ng": "ng",
     "dev": "ng serve --port 4701",
     "start": "http-server ./dist/microfrontend-one -p 4700",
-    "build": "ng build --output-hashing none --prod",
-    "build:watch": "ng build --output-hashing none --prod --watch",
+    "build": "ng build --output-hashing none --prod --single-bundle true",
+    "build:watch": "ng build --output-hashing none --prod --single-bundle true --watch",
     "bundle:watch": "nodemon --watch dist/main.js --watch dist/runtime.js --watch polyfills.js generateSingleBundle.js",
     "generate-single-bundle": "node generateSingleBundle.js",
     "test": "ng test",
@@ -24,6 +24,7 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
+    "ngx-build-plus": "^12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

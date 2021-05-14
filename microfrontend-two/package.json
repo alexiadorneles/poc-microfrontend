@@ -6,7 +6,7 @@
     "dev": "ng serve --port 4501",
     "start": "http-server ./dist/microfrontend-two -p 4500",
     "build": "ng build --output-hashing none --prod --single-bundle true",
-    "build:watch": "ng build --output-hashing none --prod --watch",
+    "build:watch": "ng build --output-hashing none --prod --single-bundle true --watch",
     "bundle:watch": "nodemon --watch dist/main.js --watch dist/runtime.js --watch polyfills.js generateSingleBundle.js",
     "generate-single-bundle": "node generateSingleBundle.js",
     "test": "ng test",
