@@ -7,7 +7,7 @@ const main = "./dist/microfrontend-one/main.js";
 
 const files = [vendor, polyfill, runTime, main];
 
-let content = "console.log('MFE1 :::::::::: running single bundle');";
+let content = "console.log('MFE1 :::::::::: loaded single bundle');";
 
 files.forEach((file) => {
   try {
@@ -16,5 +16,5 @@ files.forEach((file) => {
   } catch (err) {}
 });
 
-fs.writeFileSync("./dist/microfrontend-one/single-bundle.js", content);
+fs.writeFileSync("./dist/microfrontend-one/single-bundle-one.js", content);
 console.log("DONE!!");

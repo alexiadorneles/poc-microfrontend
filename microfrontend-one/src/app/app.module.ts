@@ -15,9 +15,14 @@ export class AppModule implements DoBootstrap {
       injector,
     });
     if (!customElements.get('app-microfrontend-one')) {
+      console.log('app-microfrontend-one defining...');
       customElements.define('app-microfrontend-one', element);
+    } else {
+      console.log('app-microfrontend-one element already defined');
     }
   }
 
-  ngDoBootstrap(): void {}
+  ngDoBootstrap(): void {
+    console.log('bootstrapping MFE1');
+  }
 }

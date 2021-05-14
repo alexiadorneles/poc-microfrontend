@@ -16,5 +16,5 @@ files.forEach((file) => {
   } catch (err) {}
 });
 
-fs.writeFileSync("./dist/microfrontend-two/single-bundle.js", content);
+fs.writeFileSync("./dist/microfrontend-two/single-bundle-two.js", content);
 console.log("DONE!!");

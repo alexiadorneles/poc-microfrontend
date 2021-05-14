@@ -40,7 +40,7 @@ export class MicrofrontendContainerComponent implements AfterViewInit {
     const microfrontendConfig = environment.microfrontends[id!];
     const script = document.createElement('script');
     script.id = generateScriptID(id);
-    script.src = `${microfrontendConfig.url}/single-bundle.js`;
+    script.src = `${microfrontendConfig.url}/single-bundle-${id}.js`;
     script.type = 'text/javascript';
     document.body.appendChild(script);
   }
