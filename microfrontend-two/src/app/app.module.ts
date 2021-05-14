@@ -3,9 +3,12 @@ import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MicrofrontendTwoComponent } from './microfrontend-two/microfrontend-two.component';
+import { AddressComponent } from './address/address.component';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
-  declarations: [MicrofrontendTwoComponent],
+  declarations: [MicrofrontendTwoComponent, AddressComponent, PaymentMethodComponent, ConfirmationComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
 })
