@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AddressComponent } from './address/address.component';
-import { ConfirmationComponent } from './confirmation/confirmation.component';
-import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { AddressComponent } from './components/address/address.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
 
 const routes: Routes = [
   {
