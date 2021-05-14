@@ -10,7 +10,9 @@ export class HeaderComponent implements OnInit {
   public userToken: number | undefined;
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.generateAuthToken();
+  }
 
   public generateAuthToken(): number {
     this.userToken = Math.trunc(Math.random() * 1000000);

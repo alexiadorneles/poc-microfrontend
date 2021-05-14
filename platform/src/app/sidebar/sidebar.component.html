@@ -5,7 +5,7 @@
     <li routerLink="/mfe/two" class="app-name">Checkout</li>
   </ul>
 
-  <ul class="list-app-options">
+  <ul *ngIf="menus.length > 0" class="list-app-options">
     <h3 class="option__title">Options</h3>
     <li *ngFor="let menu of menus" (click)="dispatchEvent(menu)">
       <a>{{ menu.name }}</a>
