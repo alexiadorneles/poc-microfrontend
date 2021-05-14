@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderComponent implements OnInit {
+  public userToken: number | undefined;
   constructor() { }
 
   ngOnInit(): void {}
 
   public generateAuthToken(): number {
-    return (Math.random() * 10000);
+    this.userToken = Math.trunc(Math.random() * 1000000);
+    return this.userToken;
   }
-
 }
