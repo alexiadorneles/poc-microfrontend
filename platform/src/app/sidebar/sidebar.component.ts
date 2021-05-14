@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  dispatchEvent(menu: Menu) {
+  dispatchEvent(menu: Menu): void {
     const event = new CustomEvent('SIDEBAR.MENU_CLICK', {
       detail: menu.id
     });
