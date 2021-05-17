@@ -1,21 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthTokenService } from './../services/auth-token/auth-token.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [AuthTokenService]
 })
 
 export class HeaderComponent implements OnInit {
-  public userToken: number | undefined;
-  constructor() { }
+  public userAuth = {
+    authState: 'unauthenticated',
+    token: '',
+  };
+
+  constructor(private authTokenService: AuthTokenService) { }
 
   ngOnInit(): void {
-    this.generateAuthToken();
+    this.getTokenFromService();
   }
 
-  public generateAuthToken(): number {
-    this.userToken = Math.trunc(Math.random() * 1000000);
-    return this.userToken;
+  public getTokenFromService(): void {
+    this.authTokenService.getAuthToken().subscribe(
+      (token: string) => {
+        this.userAuth.authState = 'authenticated';
+        this.userAuth.token = token;
+      }
+    );
+
   }
 }

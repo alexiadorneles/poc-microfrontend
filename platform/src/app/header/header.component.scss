@@ -37,6 +37,8 @@ p {
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
+
+    b { text-transform: capitalize; }
   }
 }
 

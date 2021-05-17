@@ -9,7 +9,7 @@
   </div>
 
   <div class="right">
-    <b>Authenticated user</b>
-    <span>Token: {{ userToken }}</span>
+    <b>{{ userAuth.authState }} user</b>
+    <span *ngIf="userAuth.token">Token: {{ userAuth.token }}</span>
   </div>
 </div>
