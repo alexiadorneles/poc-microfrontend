@@ -1,8 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { registerEvents } from './events/event.registry';
 import { HeaderComponent } from './header/header.component';
@@ -18,18 +17,9 @@ registerEvents();
     HeaderComponent,
     SidebarComponent,
     NotFoundComponent,
-<<<<<<< HEAD
-    MicrofrontendContainerComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-=======
     MicrofrontendContainerComponent,
->>>>>>> feat: add working version with RXJS.
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

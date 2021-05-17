@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../service/event.service';
+import { EventService } from '../services';
 import { Menu } from './menu';
 
 @Component({
@@ -29,5 +29,5 @@ export class SidebarComponent implements OnInit {
 
   private handleMenuChangesFromMFE = (event: CustomEvent<Menu[]>) => {
     this.menus = event.detail;
-  }
+  };
 }
