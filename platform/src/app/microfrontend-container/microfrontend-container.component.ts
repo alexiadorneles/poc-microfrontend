@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostBinding,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -16,6 +17,8 @@ const generateScriptID = (mfe: string = '') => `${mfe}-script`;
   styleUrls: ['./microfrontend-container.component.scss'],
 })
 export class MicrofrontendContainerComponent implements AfterViewInit {
+  @HostBinding('attr.class') class = 'microfrontend-container';
+
   @ViewChild('microfrontendContainer') container:
     | ElementRef<HTMLDivElement>
     | undefined;
