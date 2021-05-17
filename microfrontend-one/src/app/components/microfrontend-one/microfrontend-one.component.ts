@@ -7,6 +7,7 @@ import { INTERNAL_ROUTES } from 'src/app/routes/routes';
   templateUrl: './microfrontend-one.component.html',
   styleUrls: ['./microfrontend-one.component.scss'],
 })
+
 export class MicrofrontendOneComponent implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
@@ -40,5 +41,5 @@ export class MicrofrontendOneComponent implements OnInit, OnDestroy {
   private handleEventMenuClick = (event: CustomEvent<string>) => {
     const routeID = event.detail;
     this.router.navigate([{ outlets: { mfe1: routeID } }]);
-  };
+  }
 }

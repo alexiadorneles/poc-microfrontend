@@ -1,0 +1,10 @@
+.auth-bar {
+  width: 100%;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: gray;
+  transition: all .25s ease;
+}
+
+.auth-bar--green { background-color: green; }
+.auth-bar--red { background-color: red; }

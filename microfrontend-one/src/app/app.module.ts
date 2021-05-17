@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { DessertsComponent } from './components/desserts/desserts.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { MicrofrontendOneComponent } from './components/microfrontend-one/microfrontend-one.component';
+import { AuthBarComponent } from './components/auth-bar/auth-bar.component';
 
 @NgModule({
-  declarations: [MicrofrontendOneComponent, MealsComponent, DessertsComponent],
+  declarations: [MicrofrontendOneComponent, MealsComponent, DessertsComponent, AuthBarComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
 })
