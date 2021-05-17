@@ -34,11 +34,31 @@ p {
   }
 
   .right {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
+    gap: 10px;
+
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
     b { text-transform: capitalize; }
+
+    button {
+      color: #fff;
+      border: none;
+      background-color: lighten(#1976d2, 15%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: .7em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      font-weight: bold;
+      padding: 10px;
+      cursor: pointer;
+    }
   }
 }
 

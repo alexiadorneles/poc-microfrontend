@@ -9,7 +9,10 @@
   </div>
 
   <div class="right">
-    <b>{{ userAuth.authState }} user</b>
-    <span *ngIf="userAuth.token">Token: {{ userAuth.token }} <button (click)="renewToken()">Renew</button></span>
+    <div class="info-container">
+      <b>{{ userAuth.authState }} user</b>
+      <span *ngIf="userAuth.token">Token: {{ userAuth.token }}</span>
+    </div>
+    <button (click)="renewToken()">Renew</button>
   </div>
 </div>
