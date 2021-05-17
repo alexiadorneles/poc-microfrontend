@@ -27,5 +27,5 @@ export class SidebarComponent implements OnInit {
 
   private handleMenuChangesFromMFE = (event: CustomEvent<Menu[]>) => {
     this.menus = event.detail;
-  };
+  }
 }

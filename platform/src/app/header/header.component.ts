@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   public getTokenFromService(): void {
     this.authTokenService.getAuthToken().subscribe(
-      (token: string) => this.setUserAuthState({authState: 'authenticated', token})
+      (token: string) => this.setUserAuthState({authState: 'authenticated', token: token[0]})
     );
   }
 
@@ -34,5 +34,15 @@ export class HeaderComponent implements OnInit {
   private setUserAuthState(newState: object | any): void {
     this.userAuth.authState = newState?.authState;
     this.userAuth.token = newState?.token;
+
+    this.dispatchEvent(newState);
+  }
+
+  private dispatchEvent(newStatus: object | any): void {
+    const event = new CustomEvent('AUTH.NEW_STATUS', {
+      detail: newStatus,
+    });
+
+    window.dispatchEvent(event);
   }
 }
