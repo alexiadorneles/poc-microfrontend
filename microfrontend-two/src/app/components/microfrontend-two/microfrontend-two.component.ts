@@ -1,5 +1,7 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CommunicationService } from 'src/app/events/communication.service';
 import { INTERNAL_ROUTES } from 'src/app/routes/route';
 
 @Component({
@@ -8,38 +10,40 @@ import { INTERNAL_ROUTES } from 'src/app/routes/route';
   styleUrls: ['./microfrontend-two.component.scss'],
 })
 export class MicrofrontendTwoComponent implements OnInit, OnDestroy {
-  constructor(private router: Router) {}
+  private subscription: Subscription | undefined;
+
+  constructor(
+    private router: Router,
+    private communicationService: CommunicationService
+  ) {}
 
   ngOnInit(): void {
     this.router.initialNavigation();
-
-    window.addEventListener(
-      'SIDEBAR.MENU_CLICK',
-      this.handleEventMenuClick as EventListener,
-      true
-    );
-
+    this.listenToMenuClickEvent();
     this.fireMenuEventsToPlatform();
+  }
+
+  private listenToMenuClickEvent(): void {
+    const observable = this.communicationService
+      .onLevel('Sidebar')
+      .getObservable('MenuClick');
+    this.subscription = observable.subscribe(this.handleMenuClick);
   }
 
   @HostListener('unloaded')
   ngOnDestroy(): void {
-    window.removeEventListener(
-      'SIDEBAR.MENU_CLICK',
-      this.handleEventMenuClick as EventListener,
-      true
-    );
+    this.subscription?.unsubscribe();
   }
 
-  private fireMenuEventsToPlatform() {
+  private fireMenuEventsToPlatform(): void {
     const event = new CustomEvent('SIDEBAR.MFE_MENUS', {
       detail: INTERNAL_ROUTES,
     });
     window.dispatchEvent(event);
   }
 
-  private handleEventMenuClick = (event: CustomEvent) => {
-    const routeID = event.detail;
-    this.router.navigate([{ outlets: { mfe2: routeID } }]);
+  private handleMenuClick = ({ menuID }: { menuID: string }) => {
+    console.log('handling click');
+    this.router.navigate([{ outlets: { mfe2: menuID } }]);
   };
 }

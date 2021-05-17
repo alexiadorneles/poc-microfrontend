@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { menuMock, Menu } from './menu';
+import { EventService } from '../service/event.service';
+import { Menu } from './menu';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,7 @@ import { menuMock, Menu } from './menu';
 export class SidebarComponent implements OnInit {
   menus: Menu[] = [];
 
-  constructor() {}
+  constructor(private eventService: EventService) {}
 
   ngOnInit(): void {
     window.addEventListener(
@@ -19,6 +20,7 @@ export class SidebarComponent implements OnInit {
   }
 
   dispatchEvent(menu: Menu): void {
+    this.eventService.fireEvent('Sidebar', 'MenuClick', { menuID: menu.id });
     const event = new CustomEvent('SIDEBAR.MENU_CLICK', {
       detail: menu.id,
     });
