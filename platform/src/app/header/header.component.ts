@@ -22,11 +22,17 @@ export class HeaderComponent implements OnInit {
 
   public getTokenFromService(): void {
     this.authTokenService.getAuthToken().subscribe(
-      (token: string) => {
-        this.userAuth.authState = 'authenticated';
-        this.userAuth.token = token;
-      }
+      (token: string) => this.setUserAuthState({authState: 'authenticated', token})
     );
+  }
 
+  public renewToken(): void {
+    this.setUserAuthState({authState: 'unauthenticated', token: ''});
+    this.getTokenFromService();
+  }
+
+  private setUserAuthState(newState: object | any): void {
+    this.userAuth.authState = newState?.authState;
+    this.userAuth.token = newState?.token;
   }
 }
