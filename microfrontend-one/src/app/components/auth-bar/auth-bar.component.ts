@@ -11,7 +11,9 @@ export class AuthBarComponent implements OnInit, OnDestroy {
     token: '',
   };
 
-  constructor() { }
+  constructor() {
+    this.setUserAuthState = this.setUserAuthState.bind(this);
+  }
 
   ngOnInit(): void {
     window.addEventListener(
@@ -28,10 +30,7 @@ export class AuthBarComponent implements OnInit, OnDestroy {
   }
 
   private setUserAuthState(event: CustomEvent<any>): void {
-    console.log(event.detail);
-    console.log(this);
     this.userAuth.authState = event.detail?.authState;
     this.userAuth.token = event.detail?.token;
-    console.log(this.userAuth);
   }
 }
