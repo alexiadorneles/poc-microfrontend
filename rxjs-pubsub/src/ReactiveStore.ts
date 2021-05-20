@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference types="rxjs" />
-
 import * as rxjs from 'rxjs';
 
 type CustomWindow = typeof window & {
