@@ -1,45 +1,47 @@
 {
-  "name": "rxjs-pubsub",
-  "version": "1.0.0",
-  "description": "PubSub implemented with RXJS library",
-  "main": "build/index.js",
-  "typings": "build/index.d.ts",
-  "module": "build/index.js",
-  "repository": "https://github.com/alexiadorneles/rxjs-pubsub",
-  "license": "MIT",
-  "keywords": [],
-  "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "fix:prettier": "prettier \"src/**/*.ts\" --write",
-    "fix:lint": "eslint src --ext .ts --fix",
-    "build:watch": "tsc -p tsconfig.json -w",
-    "version": "standard-version"
-  },
-  "engines": {
-    "node": ">=10"
-  },
-  "dependencies": {
-    "rxjs": "^7.0.1"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "@typescript-eslint/parser": "^4.0.1",
-    "eslint": "^7.8.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-functional": "^3.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "prettier": "^2.1.1",
-    "standard-version": "^9.0.0",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
-  },
-  "files": [
-    "build",
-    "!**/*.spec.*",
-    "!**/*.json",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ]
+	"name": "rxjs-pubsub",
+	"version": "1.0.0",
+	"description": "PubSub implemented with RXJS library",
+	"main": "lib/index.js",
+	"module": "lib/index.esm.js",
+	"typings": "lib/index.d.ts",
+	"repository": "https://github.com/alexiadorneles/rxjs-pubsub",
+	"license": "MIT",
+	"keywords": [],
+	"scripts": {
+		"build": "rollup -c",
+		"build:tsc": "tsc -p tsconfig.json",
+		"fix:prettier": "prettier \"src/**/*.ts\" --write",
+		"fix:lint": "eslint src --ext .ts --fix",
+		"build:watch": "tsc -p tsconfig.json -w",
+		"version": "standard-version"
+	},
+	"engines": {
+		"node": ">=10"
+	},
+	"peerDependencies": {
+		"rxjs": "~6.6.0"
+	},
+	"dependencies": {
+		"rxjs": "~6.6.0"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^4.0.1",
+		"@typescript-eslint/parser": "^4.0.1",
+		"eslint": "^7.8.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-eslint-comments": "^3.2.0",
+		"eslint-plugin-functional": "^3.0.2",
+		"eslint-plugin-import": "^2.22.0",
+		"prettier": "^2.1.1",
+		"rollup": "^2.48.0",
+		"rollup-plugin-typescript2": "^0.30.0",
+		"standard-version": "^9.0.0",
+		"ts-node": "^9.0.0",
+		"typescript": "^4.0.2"
+	},
+	"files": [
+		"lib",
+		"package.json"
+	]
 }

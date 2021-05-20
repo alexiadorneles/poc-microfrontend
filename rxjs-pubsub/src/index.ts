@@ -1,1 +1,2 @@
-export * from './lib/ReactiveStore';
+export * from './ReactiveStore';
+/// <reference types="rxjs" />
