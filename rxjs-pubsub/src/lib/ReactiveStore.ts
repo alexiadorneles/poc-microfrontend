@@ -21,7 +21,7 @@ export class ReactiveStore<ReactionLevel, L extends keyof ReactionLevel> {
 
   // level here is needed to reinforce type K in return
   public onLevel<K extends keyof ReactionLevel>(
-    level: K
+    _level: K
   ): ReactiveStore<ReactionLevel, K> {
     return this as ReactiveStore<ReactionLevel, K>;
   }
