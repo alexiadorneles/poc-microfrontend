@@ -1,6 +1,6 @@
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ReactiveStore } from 'rxjs-pubsub';
-import { PlatformEvents } from './PlatformEvents';
+import { AuthEvents, PlatformEvents, SideBarEvents } from './platform.events';
 
 export const reactiveStore =
   ReactiveStore.instance() as unknown as ReactiveStore<
@@ -8,15 +8,22 @@ export const reactiveStore =
     keyof PlatformEvents
   >;
 
+const registerSideBarEvents = () => {
+  reactiveStore
+    .onLevel('Sidebar')
+    .save('MenuClick', new Subject<SideBarEvents['MenuClick']>());
+};
+
+const registerAuthEvents = () => {
+  const auth = { authState: 'unauthenticated', token: '' };
+  reactiveStore
+    .onLevel('Auth')
+    .save('NewStatus', new BehaviorSubject<AuthEvents['NewStatus']>(auth));
+};
+
 export const registerEvents = () => {
   console.log('Platform ::::::::::: Registering events');
   registerSideBarEvents();
+  registerAuthEvents();
   console.log('Platform ::::::::::: Event registration finished');
-};
-
-const registerSideBarEvents = () => {
-  type SideBarEventData = PlatformEvents['Sidebar'];
-  reactiveStore
-    .onLevel('Sidebar')
-    .save('MenuClick', new Subject<SideBarEventData['MenuClick']>());
 };

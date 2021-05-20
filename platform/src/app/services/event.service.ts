@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { reactiveStore } from '../events/event.registry';
-import { PlatformEvents } from '../events/PlatformEvents';
+import { PlatformEvents } from '../events/platform.events';
 
 @Injectable({ providedIn: 'root' })
 export class EventService {

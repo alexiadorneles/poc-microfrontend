@@ -1,6 +1,10 @@
-<div class="auth-bar" [ngClass]="{'auth-bar--green':userAuth.token, 'auth-bar--red':!userAuth.token}">
-  <span *ngIf="userAuth.token">authenticated by token: {{ userAuth.token }}</span>
-  <span *ngIf="!userAuth.token">unauthenticated</span>
+<div
+  class="auth-bar"
+  [ngClass]="{
+    'auth-bar--green': token,
+    'auth-bar--red': !token
+  }"
+>
+  <span *ngIf="token">authenticated by token: {{ token }}</span>
+  <span *ngIf="!token">unauthenticated</span>
 </div>
-
-
