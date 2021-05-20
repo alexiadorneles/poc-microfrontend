@@ -19,12 +19,8 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  dispatchEvent(menu: Menu): void {
+  signalMenuClick(menu: Menu): void {
     this.eventService.fireEvent('Sidebar', 'MenuClick', { menuID: menu.id });
-    const event = new CustomEvent('SIDEBAR.MENU_CLICK', {
-      detail: menu.id,
-    });
-    window.dispatchEvent(event);
   }
 
   private handleMenuChangesFromMFE = (event: CustomEvent<Menu[]>) => {
