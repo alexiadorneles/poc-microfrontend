@@ -3,7 +3,7 @@ import { ReactiveStore } from 'rxjs-pubsub';
 import { ConsumerEvents } from './consumer.events';
 
 @Injectable({ providedIn: 'root' })
-export class CommunicationService {
+export class EventService {
   private level: keyof ConsumerEvents | undefined;
 
   private store = ReactiveStore.instance() as ReactiveStore<

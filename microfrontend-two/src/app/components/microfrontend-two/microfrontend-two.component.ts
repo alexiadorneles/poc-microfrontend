@@ -1,7 +1,7 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CommunicationService } from 'src/app/events/communication.service';
+import { EventService } from 'src/app/events/event.service';
 import { INTERNAL_ROUTES } from 'src/app/routes/route';
 
 @Component({
@@ -12,10 +12,7 @@ import { INTERNAL_ROUTES } from 'src/app/routes/route';
 export class MicrofrontendTwoComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
 
-  constructor(
-    private router: Router,
-    private communicationService: CommunicationService
-  ) {}
+  constructor(private router: Router, private eventService: EventService) {}
 
   ngOnInit(): void {
     this.router.initialNavigation();
@@ -24,7 +21,7 @@ export class MicrofrontendTwoComponent implements OnInit, OnDestroy {
   }
 
   private listenToMenuClickEvent(): void {
-    const observable = this.communicationService
+    const observable = this.eventService
       .onLevel('Sidebar')
       .getObservable('MenuClick');
     this.subscription = observable.subscribe(this.handleMenuClick);
