@@ -33,7 +33,7 @@ export class ReactiveStore<ReactionLevel, L extends keyof ReactionLevel> {
 	}
 
 	public getObservable<T extends keyof ReactionLevel[L], R extends rxjs.Subject<ReactionLevel[L][T]>>(name: T): R {
-		return WINDOW.reactiveObservables[name].asObservable() as R;
+		return WINDOW.reactiveObservables[name]?.asObservable() as R;
 	}
 
 	public getSubject<T extends keyof ReactionLevel[L], R extends rxjs.Subject<ReactionLevel[L][T]>>(name: T): R {
