@@ -18,7 +18,6 @@ export class AuthBarComponent implements OnInit, OnDestroy {
 
   // for some really mysterious reason screen is not re-rendering after property change
   get token(): string {
-    console.log('get token returning ', this.userAuth.token);
     return this.userAuth.token;
   }
 
@@ -35,11 +34,7 @@ export class AuthBarComponent implements OnInit, OnDestroy {
   }
 
   private setUserAuthState(status: AuthStatus): void {
-    console.log('here i am', status);
     this.userAuth = { ...status };
     this.userAuth.token = status.token;
-    console.log(this);
-    console.log(this.userAuth);
-    console.log('????');
   }
 }

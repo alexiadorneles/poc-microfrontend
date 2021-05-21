@@ -40,7 +40,6 @@ export class MicrofrontendTwoComponent implements OnInit, OnDestroy {
   }
 
   private handleMenuClick = ({ menuID }: { menuID: string }) => {
-    console.log('handling click');
     this.router.navigate([{ outlets: { mfe2: menuID } }]);
   };
 }
