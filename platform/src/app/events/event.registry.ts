@@ -1,12 +1,11 @@
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ReactiveStore } from 'rxjs-pubsub';
-import { AuthEvents, PlatformEvents, SideBarEvents } from './platform.events';
+import { AuthEvents, ProducerEvents, SideBarEvents } from './producer.events';
 
-export const reactiveStore =
-  ReactiveStore.instance() as unknown as ReactiveStore<
-    PlatformEvents,
-    keyof PlatformEvents
-  >;
+const reactiveStore = ReactiveStore.instance() as unknown as ReactiveStore<
+  ProducerEvents,
+  keyof ProducerEvents
+>;
 
 const registerSideBarEvents = () => {
   reactiveStore

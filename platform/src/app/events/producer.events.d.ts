@@ -8,7 +8,7 @@ export interface AuthEvents {
   NewStatus: AuthStatus;
 }
 
-export interface PlatformEvents {
+export interface ProducerEvents {
   Sidebar: SideBarEvents;
   Auth: AuthEvents;
 }
