@@ -1,8 +1,9 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EventService } from 'src/app/events/event.service';
-import { INTERNAL_ROUTES } from 'src/app/routes/route';
+import { SideBarEvents } from 'src/app/events/consumer.events';
+import { INTERNAL_ROUTES } from 'src/app/routes/routes';
+import { EventService } from 'src/app/service/event.service';
 
 @Component({
   selector: 'app-mfe2-root',
@@ -33,13 +34,10 @@ export class MicrofrontendTwoComponent implements OnInit, OnDestroy {
   }
 
   private fireMenuEventsToPlatform(): void {
-    const event = new CustomEvent('SIDEBAR.MFE_MENUS', {
-      detail: INTERNAL_ROUTES,
-    });
-    window.dispatchEvent(event);
+    this.eventService.fireEvent('Menu', 'MfeMenus', { menus: INTERNAL_ROUTES });
   }
 
-  private handleMenuClick = ({ menuID }: { menuID: string }) => {
+  private handleMenuClick = ({ menuID }: SideBarEvents['MenuClick']) => {
     this.router.navigate([{ outlets: { mfe2: menuID } }]);
   };
 }

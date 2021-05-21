@@ -1,27 +1,28 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Type } from '@angular/core';
 import { Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AddressComponent } from './components/address/address.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
+import {
+  AvailableRoutes,
+  INTERNAL_ROUTES,
+  ROUTER_OUTLET,
+} from './routes/routes';
 
-const routes: Routes = [
-  {
-    path: 'address',
-    component: AddressComponent,
-    outlet: 'mfe2',
-  },
-  {
-    path: 'payment-method',
-    component: PaymentMethodComponent,
-    outlet: 'mfe2',
-  },
-  {
-    path: 'confirmation',
-    component: ConfirmationComponent,
-    outlet: 'mfe2',
-  },
-];
+const ROUTE_TO_COMPONENT_MAP: { [key in AvailableRoutes]: Type<any> } = {
+  address: AddressComponent,
+  confirmation: ConfirmationComponent,
+  'payment-method': PaymentMethodComponent,
+};
+
+const routes: Routes = INTERNAL_ROUTES.map((route) => {
+  return {
+    path: route.id,
+    outlet: ROUTER_OUTLET,
+    component: ROUTE_TO_COMPONENT_MAP[route.id],
+  };
+});
 
 @NgModule({
   imports: [RouterTestingModule.withRoutes(routes)],

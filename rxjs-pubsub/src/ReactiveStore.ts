@@ -26,7 +26,8 @@ export class ReactiveStore<ReactionLevel, L extends keyof ReactionLevel> {
 		observable: R
 	): ReactiveStore<ReactionLevel, L> {
 		if (WINDOW.reactiveObservables[name]) {
-			throw new Error('event already registered: ' + name);
+			console.warn('event already registered: ' + name);
+			return this;
 		}
 		WINDOW.reactiveObservables[name] = observable;
 		return this;

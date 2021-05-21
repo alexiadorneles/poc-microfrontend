@@ -6,6 +6,11 @@ import { MicrofrontendTwoComponent } from './components/microfrontend-two/microf
 import { AddressComponent } from './components/address/address.component';
 import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { registerEvents } from './events/event.registry';
+
+registerEvents();
+const event = new CustomEvent('MfeLoaded');
+window.dispatchEvent(event);
 
 @NgModule({
   declarations: [
