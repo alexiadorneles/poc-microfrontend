@@ -34,10 +34,7 @@ export class MicrofrontendOneComponent implements OnInit, OnDestroy {
   }
 
   private fireMenuEventForPlatform(): void {
-    const event = new CustomEvent('SIDEBAR.MFE_MENUS', {
-      detail: INTERNAL_ROUTES,
-    });
-    window.dispatchEvent(event);
+    this.eventService.fireEvent('Menu', 'MfeMenus', { menus: INTERNAL_ROUTES });
   }
 
   private handleMenuClick = ({ menuID }: SideBarEvents['MenuClick']) => {

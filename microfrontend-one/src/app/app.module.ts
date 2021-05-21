@@ -6,9 +6,19 @@ import { DessertsComponent } from './components/desserts/desserts.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { MicrofrontendOneComponent } from './components/microfrontend-one/microfrontend-one.component';
 import { AuthBarComponent } from './components/auth-bar/auth-bar.component';
+import { registerEvents } from './events/event.registry';
+
+registerEvents();
+const event = new CustomEvent('MfeLoaded');
+window.dispatchEvent(event);
 
 @NgModule({
-  declarations: [MicrofrontendOneComponent, MealsComponent, DessertsComponent, AuthBarComponent],
+  declarations: [
+    MicrofrontendOneComponent,
+    MealsComponent,
+    DessertsComponent,
+    AuthBarComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
 })
@@ -25,7 +35,5 @@ export class AppModule implements DoBootstrap {
     }
   }
 
-  ngDoBootstrap(): void {
-    console.log('bootstrapping MFE1');
-  }
+  ngDoBootstrap(): void {}
 }
