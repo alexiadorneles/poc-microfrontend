@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { menuMock, Menu } from './menu';
+import { Menu } from './menu';
 
 @Component({
   selector: 'app-sidebar',
@@ -26,6 +26,7 @@ export class SidebarComponent implements OnInit {
   }
 
   private handleMenuChangesFromMFE = (event: CustomEvent<Menu[]>) => {
+    console.log("handleMenuChangesFromMFE ------- ");
     this.menus = event.detail;
   }
 }

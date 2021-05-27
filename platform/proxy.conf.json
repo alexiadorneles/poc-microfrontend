@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "http://www.randomnumberapi.com/api/",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}
