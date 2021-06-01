@@ -1,14 +1,10 @@
 import { browser, by, element } from 'protractor';
 
-export class AppPage {
+export class Platform {
   MENU_TITLE: string = 'Microfrontend Not Found';
 
   async navigateToHomePage(): Promise<unknown> {
     return browser.get(browser.baseUrl);
-  }
-
-  async getCurrentURL(): Promise<string> {
-    return browser.getCurrentUrl();
   }
 
   async containerTitleText(): Promise<string> {

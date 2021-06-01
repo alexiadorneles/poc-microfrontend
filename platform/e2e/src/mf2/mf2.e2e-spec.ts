@@ -1,7 +1,6 @@
 import { browser } from "protractor";
 import { Mf2Page } from "./mf2.po";
 
-
 describe('MicroFrontend 2 Component', () => {
   let mf2Page: Mf2Page;
 
@@ -14,8 +13,10 @@ describe('MicroFrontend 2 Component', () => {
     await mf2Page.navigateToMf2Page();
     expect(await browser.getCurrentUrl()).toBe(mf2Page.mf2URL);
    
-    mf2Page.addressOption().click();
-    console.log('-----', mf2Page.addressContainerText())
-    expect(mf2Page.addressContainerText()).toContain('bbbbbb');
+    //When
+    await mf2Page.paymentMethodOption().click();
+
+    //Then
+    expect(await mf2Page.OptionsText().getText()).toEqual(mf2Page.paymentListOptions);
   });
 })

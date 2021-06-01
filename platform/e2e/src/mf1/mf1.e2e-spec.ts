@@ -13,12 +13,10 @@ describe('MicroFrontend 1 Component', () => {
     await mf1Page.navigateToMf1Page();
 
     //When
-    mf1Page.mealsOption().click();
-    await browser.sleep(500);
+    await mf1Page.mealsOption().click();
 
     //Then
     expect(await browser.getCurrentUrl()).toBe(mf1Page.mf1URL);
-    expect(await mf1Page.mealsMenuText().getText()).toEqual(mf1Page.mealsListOptions);
+    expect(await mf1Page.OptionsText().getText()).toEqual(mf1Page.mealsListOptions);
   });
-
 });
