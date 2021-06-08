@@ -4,11 +4,13 @@
 
 interface Env {
   production: boolean;
+  baseUrl: string;
   microfrontends: { [key: string]: { url: string; scriptName: string } };
 }
 
 export const environment: Env = {
   production: false,
+  baseUrl: 'http://localhost:3000/tasks',
   microfrontends: {
     one: { url: 'http://localhost:4700', scriptName: 'main.js' },
     two: { url: 'http://localhost:4500', scriptName: 'main.js' },
