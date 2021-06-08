@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   HostBinding,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -34,7 +33,7 @@ export class MicrofrontendContainerComponent implements AfterViewInit {
       this.loadScriptJS(id);
     }
     this.renderMicrofrontend(id);
-  }
+  };
 
   private cleanContainerContent(): void {
     this.container!.nativeElement.innerHTML = '';

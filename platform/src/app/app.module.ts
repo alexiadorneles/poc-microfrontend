@@ -1,14 +1,12 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { MicrofrontendContainerComponent } from './microfrontend-container/microfrontend-container.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { AppComponent } from './components/app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MicrofrontendContainerComponent } from './components/microfrontend-container/microfrontend-container.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +14,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HeaderComponent,
     SidebarComponent,
     NotFoundComponent,
-    MicrofrontendContainerComponent
+    MicrofrontendContainerComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

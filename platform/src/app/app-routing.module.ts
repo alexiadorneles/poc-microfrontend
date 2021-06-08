@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MicrofrontendContainerComponent } from './microfrontend-container/microfrontend-container.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { MicrofrontendContainerComponent } from './components/microfrontend-container/microfrontend-container.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
