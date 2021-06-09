@@ -8,25 +8,16 @@ import {
 
 export interface Session {
   token: string;
-  name: string;
 }
 
 export interface SessionState
-  extends EntityState<Session, number>,
+  extends EntityState<Session, string>,
     ActiveState {}
 
-export function createInitialState(): SessionState {
-  return {
-    token: '',
-    name: '',
-    active: null,
-  };
-}
-
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'session' })
+@StoreConfig({ name: 'session', idKey: 'token' })
 export class SessionStore extends EntityStore<SessionState> {
   constructor() {
-    super(createInitialState());
+    super();
   }
 }

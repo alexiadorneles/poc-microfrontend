@@ -32,15 +32,13 @@ export class HeaderComponent implements OnInit {
   }
 
   public getTokenFromService(): void {
-    this.authTokenService
-      .getAuthToken()
-      .subscribe((token: string[]) =>
-        this.sessionService.updateToken(token.shift()!)
-      );
+    this.authTokenService.getAuthToken().subscribe(([token]: string[]) => {
+      this.sessionService.updateToken(token);
+      this.sessionService.setActive(token);
+    });
   }
 
   public renewToken(): void {
-    this.sessionService.updateToken('');
     this.getTokenFromService();
   }
 

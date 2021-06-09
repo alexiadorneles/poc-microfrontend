@@ -6,10 +6,10 @@ export class SessionService {
   constructor(private sessionStore: SessionStore) {}
 
   public updateToken(token: string): void {
-    this.sessionStore.update({ token });
+    this.sessionStore.set([{ token }]);
   }
 
-  public setActive(sessionID: number): void {
+  public setActive(sessionID: string): void {
     this.sessionStore.setActive(sessionID);
   }
 }
