@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from 'src/app/services/session.service';
+import { SessionQuery } from 'src/app/state/session.query';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 
 @Component({
@@ -13,30 +15,33 @@ export class HeaderComponent implements OnInit {
     token: '',
   };
 
-  constructor(private authTokenService: AuthTokenService) {}
+  constructor(
+    private authTokenService: AuthTokenService,
+    private sessionQuery: SessionQuery,
+    private sessionService: SessionService
+  ) {}
 
   ngOnInit(): void {
     this.getTokenFromService();
+    this.sessionQuery.selectActive().subscribe((session) => {
+      if (session) {
+        this.userAuth.token = session.token;
+        this.dispatchEvent({ ...session, authState: 'authenticated' });
+      }
+    });
   }
 
   public getTokenFromService(): void {
     this.authTokenService
       .getAuthToken()
-      .subscribe((token: string) =>
-        this.setUserAuthState({ authState: 'authenticated', token: token[0] })
+      .subscribe((token: string[]) =>
+        this.sessionService.updateToken(token.shift()!)
       );
   }
 
   public renewToken(): void {
-    this.setUserAuthState({ authState: 'unauthenticated', token: '' });
+    this.sessionService.updateToken('');
     this.getTokenFromService();
-  }
-
-  private setUserAuthState(newState: object | any): void {
-    this.userAuth.authState = newState?.authState;
-    this.userAuth.token = newState?.token;
-
-    this.dispatchEvent(newState);
   }
 
   private dispatchEvent(newStatus: object | any): void {
