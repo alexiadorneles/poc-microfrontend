@@ -1,9 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SESSION_QUERY_INJECTOR } from 'src/app/injectors/query.injector';
+import { SessionQuery } from 'src/app/state/queries';
 
 @Component({
   selector: 'app-auth-bar',
   templateUrl: './auth-bar.component.html',
-  styleUrls: ['./auth-bar.component.scss']
+  styleUrls: ['./auth-bar.component.scss'],
 })
 export class AuthBarComponent implements OnInit, OnDestroy {
   public userAuth = {
@@ -11,22 +20,28 @@ export class AuthBarComponent implements OnInit, OnDestroy {
     token: '',
   };
 
-  constructor() {
+  private subscription: Subscription | undefined;
+
+  constructor(
+    @Inject(SESSION_QUERY_INJECTOR) private query: SessionQuery,
+    private changeDetector: ChangeDetectorRef
+  ) {
     this.setUserAuthState = this.setUserAuthState.bind(this);
   }
 
   ngOnInit(): void {
-    window.addEventListener(
-      'AUTH.NEW_STATUS',
-      this.setUserAuthState as EventListener
-    );
+    this.query
+      .getReversedToken()
+      .subscribe((reverseToken) => console.log(reverseToken));
+
+    this.subscription = this.query.selectActive().subscribe((session) => {
+      this.userAuth.token = session?.token || '';
+      this.changeDetector.detectChanges();
+    });
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener(
-      'AUTH.NEW_STATUS',
-      this.setUserAuthState as EventListener
-    );
+    this.subscription?.unsubscribe();
   }
 
   private setUserAuthState(event: CustomEvent<any>): void {
