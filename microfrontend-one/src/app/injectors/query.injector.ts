@@ -1,9 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { SessionQuery, PlatformQueries } from '../state/queries';
-
-export const SESSION_QUERY_INJECTOR = new InjectionToken<SessionQuery>(
-  'SessionQuery'
-);
+import { PlatformQueries } from '../state/queries';
 
 export class QueryInjector {
   private constructor() {}

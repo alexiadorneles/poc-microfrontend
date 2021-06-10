@@ -1,14 +1,7 @@
-import { SessionQuery } from './app/state/queries';
-import { SessionStore } from './app/state/stores';
+import { PlatformQueries } from './app/state/queries';
 
 declare global {
   interface Window {
-    $$stores: {
-      session: SessionStore;
-    };
-
-    $$queries: {
-      session: SessionQuery;
-    };
+    $$queries: PlatformQueries;
   }
 }

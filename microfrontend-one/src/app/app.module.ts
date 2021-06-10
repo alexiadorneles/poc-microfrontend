@@ -6,9 +6,7 @@ import { AuthBarComponent } from './components/auth-bar/auth-bar.component';
 import { DessertsComponent } from './components/desserts/desserts.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { MicrofrontendOneComponent } from './components/microfrontend-one/microfrontend-one.component';
-import { queryInjector } from './injectors/query.injector';
-
-// TODO: function to create injector
+import { QueryProvider } from './providers/query.provider';
 
 @NgModule({
   declarations: [
@@ -18,12 +16,7 @@ import { queryInjector } from './injectors/query.injector';
     AuthBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [
-    {
-      provide: queryInjector.createQueryInjector('session', 'SessionQuery'),
-      useValue: window.$$queries.session,
-    },
-  ],
+  providers: [QueryProvider.provide('session', 'SessionQuery')],
 })
 export class AppModule implements DoBootstrap {
   constructor(injector: Injector) {
