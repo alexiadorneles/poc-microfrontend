@@ -6,10 +6,8 @@ import { AuthBarComponent } from './components/auth-bar/auth-bar.component';
 import { DessertsComponent } from './components/desserts/desserts.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { MicrofrontendOneComponent } from './components/microfrontend-one/microfrontend-one.component';
-import { SESSION_QUERY_INJECTOR } from './injectors/query.injector';
-import { SESSION_STORE_INJECTOR } from './injectors/store.injector';
+import { queryInjector } from './injectors/query.injector';
 
-// TODO: override window type
 // TODO: function to create injector
 
 @NgModule({
@@ -22,11 +20,7 @@ import { SESSION_STORE_INJECTOR } from './injectors/store.injector';
   imports: [BrowserModule, AppRoutingModule],
   providers: [
     {
-      provide: SESSION_STORE_INJECTOR,
-      useValue: window.$$stores.session,
-    },
-    {
-      provide: SESSION_QUERY_INJECTOR,
+      provide: queryInjector.createQueryInjector('session', 'SessionQuery'),
       useValue: window.$$queries.session,
     },
   ],

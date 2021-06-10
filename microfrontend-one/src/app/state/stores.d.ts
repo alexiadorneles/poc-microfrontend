@@ -9,3 +9,7 @@ export interface SessionState
     ActiveState {}
 
 export interface SessionStore extends EntityStore<SessionState> {}
+
+export interface Stores {
+  session: SessionStore;
+}

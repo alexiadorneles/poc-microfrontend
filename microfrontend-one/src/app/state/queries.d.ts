@@ -5,3 +5,7 @@ import { SessionState } from './stores';
 export interface SessionQuery extends QueryEntity<SessionState> {
   getReversedToken(): Observable<string | undefined>;
 }
+
+export interface PlatformQueries {
+  session: SessionQuery;
+}

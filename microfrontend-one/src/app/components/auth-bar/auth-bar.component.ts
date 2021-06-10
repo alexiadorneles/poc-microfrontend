@@ -6,7 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SESSION_QUERY_INJECTOR } from 'src/app/injectors/query.injector';
+import { queryInjector } from 'src/app/injectors/query.injector';
 import { SessionQuery } from 'src/app/state/queries';
 
 @Component({
@@ -23,7 +23,8 @@ export class AuthBarComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
 
   constructor(
-    @Inject(SESSION_QUERY_INJECTOR) private query: SessionQuery,
+    @Inject(queryInjector.getQueryInjector('session'))
+    private query: SessionQuery,
     private changeDetector: ChangeDetectorRef
   ) {
     this.setUserAuthState = this.setUserAuthState.bind(this);
