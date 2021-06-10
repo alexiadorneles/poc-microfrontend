@@ -9,6 +9,9 @@ import { MicrofrontendOneComponent } from './components/microfrontend-one/microf
 import { SESSION_QUERY_INJECTOR } from './injectors/query.injector';
 import { SESSION_STORE_INJECTOR } from './injectors/store.injector';
 
+// TODO: override window type
+// TODO: function to create injector
+
 @NgModule({
   declarations: [
     MicrofrontendOneComponent,
@@ -20,11 +23,11 @@ import { SESSION_STORE_INJECTOR } from './injectors/store.injector';
   providers: [
     {
       provide: SESSION_STORE_INJECTOR,
-      useValue: (window as any).$$stores.session,
+      useValue: window.$$stores.session,
     },
     {
       provide: SESSION_QUERY_INJECTOR,
-      useValue: (window as any).$$queries.session,
+      useValue: window.$$queries.session,
     },
   ],
 })
