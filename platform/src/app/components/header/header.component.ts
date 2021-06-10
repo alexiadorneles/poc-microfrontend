@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from 'src/app/services/session.service';
-import { SessionQuery } from 'src/app/state/session.query';
+import { SessionQuery } from 'src/app/state/session/session.query';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 
 @Component({
