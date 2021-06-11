@@ -6,6 +6,7 @@ export interface SessionQuery extends QueryEntity<SessionState> {
 }
 
 export interface PermissionQuery extends QueryEntity<PermissionState> {
+  userHasMenuViewRole$: Observable<boolean>;
   userHasPermission(permissionName: string): Observable<boolean>;
 }
 

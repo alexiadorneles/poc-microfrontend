@@ -16,7 +16,7 @@ export class MealsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.permissionQuery.userHasPermission('MENU_VIEW').subscribe((value) => {
+    this.permissionQuery.userHasMenuViewRole$.subscribe((value) => {
       this.userHasPermission = value;
     });
   }
