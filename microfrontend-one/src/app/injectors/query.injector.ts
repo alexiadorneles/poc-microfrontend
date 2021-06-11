@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 import { PlatformQueries } from '../state/queries';
 
-export class QueryInjector {
+class QueryInjector {
   private constructor() {}
   private static _instance: QueryInjector | undefined;
   private queries: { [key in keyof PlatformQueries]?: InjectionToken<any> } =
