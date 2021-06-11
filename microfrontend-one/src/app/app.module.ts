@@ -16,7 +16,10 @@ import { QueryProvider } from './providers/query.provider';
     AuthBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [QueryProvider.provide('session', 'SessionQuery')],
+  providers: [
+    QueryProvider.provide('session', 'SessionQuery'),
+    QueryProvider.provide('permission', 'PermissionQuery'),
+  ],
 })
 export class AppModule implements DoBootstrap {
   constructor(injector: Injector) {
