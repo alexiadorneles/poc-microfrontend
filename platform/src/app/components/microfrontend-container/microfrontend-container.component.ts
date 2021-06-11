@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PermissionService } from 'src/app/state/permission/permission.service';
 import { environment } from 'src/environments/environment';
 
 const generateScriptID = (mfe: string = '') => `${mfe}-script`;
@@ -22,10 +23,14 @@ export class MicrofrontendContainerComponent implements AfterViewInit {
     | ElementRef<HTMLDivElement>
     | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private permissionService: PermissionService
+  ) {}
 
   ngAfterViewInit(): void {
     this.route.params.subscribe((params) => this.loadMicrofrontend(params.id));
+    this.permissionService.init();
   }
 
   private loadMicrofrontend = (id: string): void => {

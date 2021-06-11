@@ -4,5 +4,5 @@ export interface Permission {
 }
 
 export function createPermission(params: Partial<Permission>) {
-  return {} as Permission;
+  return params as Permission;
 }

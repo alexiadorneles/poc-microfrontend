@@ -4,7 +4,10 @@ import { PermissionStore } from './permission.store';
 
 @Injectable({ providedIn: 'root' })
 export class PermissionService {
-  constructor(private permissionStore: PermissionStore) {
+  constructor(private permissionStore: PermissionStore) {}
+
+  init() {
+    this.add(createPermission({ id: 1, name: 'MENU_VIEW' }));
     this.add(createPermission({ id: 2, name: 'MENU_EDIT' }));
     this.add(createPermission({ id: 3, name: 'MENU_DELETE' }));
   }
