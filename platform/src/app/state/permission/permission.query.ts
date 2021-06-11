@@ -8,7 +8,6 @@ import { PermissionState, PermissionStore } from './permission.store';
 export class PermissionQuery extends QueryEntity<PermissionState> {
   constructor(protected store: PermissionStore) {
     super(store);
-    console.log('constructing queryyyyy');
   }
 
   userHasViewPermission$ = this.userHasPermission('MENU_VIEW');
