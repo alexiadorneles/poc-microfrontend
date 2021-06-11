@@ -10,11 +10,9 @@ export class PermissionQuery extends QueryEntity<PermissionState> {
     super(store);
   }
 
-  userHasViewPermission$ = this.userHasPermission('MENU_VIEW');
-
   public userHasPermission(permissionName: string): Observable<boolean> {
     return this.selectAll({
       filterBy: (permission) => permission.name === permissionName,
-    }).pipe(map((permission) => Boolean(permission)));
+    }).pipe(map((permission) => Boolean(permission.length)));
   }
 }
