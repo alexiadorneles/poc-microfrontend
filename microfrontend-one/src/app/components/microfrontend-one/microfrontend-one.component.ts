@@ -7,13 +7,11 @@ import { INTERNAL_ROUTES } from 'src/app/routes/routes';
   templateUrl: './microfrontend-one.component.html',
   styleUrls: ['./microfrontend-one.component.scss'],
 })
-
 export class MicrofrontendOneComponent implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.router.initialNavigation();
-    console.log('MFE1 init');
     window.addEventListener(
       'SIDEBAR.MENU_CLICK',
       this.handleEventMenuClick as EventListener
@@ -24,7 +22,6 @@ export class MicrofrontendOneComponent implements OnInit, OnDestroy {
 
   @HostListener('unloaded')
   ngOnDestroy(): void {
-    console.log('mfe1 destroyed');
     window.removeEventListener(
       'SIDEBAR.MENU_CLICK',
       this.handleEventMenuClick as EventListener
@@ -41,5 +38,5 @@ export class MicrofrontendOneComponent implements OnInit, OnDestroy {
   private handleEventMenuClick = (event: CustomEvent<string>) => {
     const routeID = event.detail;
     this.router.navigate([{ outlets: { mfe1: routeID } }]);
-  }
+  };
 }

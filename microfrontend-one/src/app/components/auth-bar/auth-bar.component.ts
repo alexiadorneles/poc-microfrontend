@@ -33,7 +33,9 @@ export class AuthBarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.query
       .getReversedToken()
-      .subscribe((reverseToken) => console.log(reverseToken));
+      .subscribe((reverseToken) =>
+        console.log('REVERSED TOKEN:', reverseToken)
+      );
 
     this.subscription = this.query.selectActive().subscribe((session) => {
       this.userAuth.token = session?.token || '';
